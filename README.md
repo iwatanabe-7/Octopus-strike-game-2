@@ -1,4 +1,4 @@
-# Octopus-strike-game 
+# Octopus-strike-game-2 
 
 ## たこの逆襲2(地球防衛編)
 君は地球人だ。
