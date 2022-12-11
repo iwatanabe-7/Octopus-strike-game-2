@@ -24,7 +24,7 @@ window.onload = function () {
 	game.preload([tweetImgUrl]);					//データを読み込んでおく		
 
 	//背景画像
-	const backgroundURL = "img/bg_outside.jpg";
+	const backgroundURL = "img/bg-outside.png";
 	game.preload([backgroundURL]);
 	//読み込み終わり
 	/////////////////////////////////////////////////
@@ -43,12 +43,11 @@ window.onload = function () {
 
 
 
-		const mainScene = new Scene();					//シーン作成
-		game.pushScene(mainScene);  					//mainSceneシーンオブジェクトを画面に設置
+		const mainScene = new Scene();
+		game.pushScene(mainScene);
 		var bg = new Sprite(400,500);
 		bg.image = game.assets[backgroundURL];
 		mainScene.addChild(bg);
-		// mainScene.backgroundColor = "black"; 			//mainSceneシーンの背景は黒くした
 
 		//ポイント表示テキスト
 		const scoreText = new Label(); 					//テキストはLabelクラス
@@ -60,7 +59,7 @@ window.onload = function () {
 
 		scoreText.text = "現在：" + point;					//テキストに文字表示 Pointは変数なので、ここの数字が増える
 
-		const takoyakiImg = new Sprite(150, 150);				//画像サイズをここに書く。使う予定の画像サイズはプロパティで見ておくこと
+		const takoyakiImg = new Sprite(100, 100);				//画像サイズをここに書く。使う予定の画像サイズはプロパティで見ておくこと
 		takoyakiImg.moveTo(118, 100);						//ぞう山ボタンの位置
 		takoyakiImg.image = game.assets[takoyakiImgUrl];			//読み込む画像の相対パスを指定。　事前にgame.preloadしてないと呼び出せない
 		mainScene.addChild(takoyakiImg);					//mainSceneにこのぞう山画像を貼り付ける  
