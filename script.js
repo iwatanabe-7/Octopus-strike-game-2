@@ -55,7 +55,7 @@ window.onload = function () {
 		startScene.addChild(startbutton); 
 
 		startbutton.ontouchend = function () {
-			state = 0;
+			state = 0.1;
 			game.replaceScene(mainScene);
 		};
 
@@ -65,7 +65,9 @@ window.onload = function () {
 		shopbutton.image = game.assets[retryImgUrl];
 		startScene.addChild(shopbutton); 
 		
-		//Main画面の設定
+
+
+		//-------- Game画面 --------//
 		const mainScene = new Scene();
 		var bg = new Sprite(400,500);
 		bg.image = game.assets[backgroundURL];
@@ -73,13 +75,21 @@ window.onload = function () {
 
 		//ポイント表示テキスト
 		const scoreText = new Label();
-		scoreText.font = "20px Meiryo";
+		scoreText.font = "20px fantasy";
 		scoreText.color = 'black';
 		scoreText.width = 400;
 		scoreText.moveTo(0, 30);
 		mainScene.addChild(scoreText);
-
 		scoreText.text = "現在：" + point;
+
+		//レベル表示テキスト
+		const levelText = new Label();
+		levelText.font = "20px fantasy";
+		levelText.color = 'black';
+		levelText.width = 400;
+		levelText.moveTo(0, 60);
+		mainScene.addChild(levelText);
+		levelText.text = "レベル：" + state;
 
 		const takoyakiImg = new Sprite(100, 100);
 		takoyakiImg.moveTo(118, 100);
@@ -92,7 +102,7 @@ window.onload = function () {
 			game.assets[clickSndUrl].clone().play();
 			this.y = -200;
 
-			if (point < 1) {
+			if (point == 1) {
 				state = 1;
 			} else if (point < 2) {
 				state = 2;
@@ -107,15 +117,22 @@ window.onload = function () {
 		};
 
 		game.onenterframe = function () {
+			//初期値(start画面)
 			if (state == 0) {
+				takoyakiImg.x = 150;
+				takoyakiImg.y = -200;
+				point = 0;
+				state = 0;
+			}
+			//初期値(main画面)
+			if (state == 0.1) {
 				takoyakiImg.x = 150;
 				takoyakiImg.y = -200;
 				point = 0;
 				state = 1;
 			}
 			if (state == 1) {
-				takoyakiImg.y += 5;
-				takoyakiImg.y += 30;
+				takoyakiImg.y += 10;
 			}
 			if (state == 2) {
 				takoyakiImg.y += 15;
@@ -139,9 +156,11 @@ window.onload = function () {
 			if (state == 5.1){
 				takoyakiImg.y += 15 + Math.random() * 30;
 			}
+			console.log(state);
 
 			//現在のテキスト表示
-			scoreText.text = "Point：" + point + " " + "レベル" + parseInt(state, 10);
+			scoreText.text = "Point：" + point;
+			levelText.text = "レベル" + parseInt(state, 10);
 
 			//ゲームオーバー判定
 			if (takoyakiImg.y >= 500) {
@@ -173,7 +192,6 @@ window.onload = function () {
 		endScene.addChild(gameOverText2);
 
 
-
 		//リトライボタン
 		const retryBtn = new Sprite(120, 60);
 		retryBtn.moveTo(50, 300);
@@ -181,7 +199,7 @@ window.onload = function () {
 		endScene.addChild(retryBtn); 
 
 		retryBtn.ontouchend = function () {
-			state = 0;
+			state = 0.1;
 			game.replaceScene(mainScene);
 		};
 
@@ -193,7 +211,9 @@ window.onload = function () {
 
 		tweetBtn.ontouchend = function () {
 			state = 0;
-			game.replaceScene(startScene);
+			game.popScene();
+			game.pushScene(startScene);
+			// game.replaceScene(startScene);
 		};
 
 	};
