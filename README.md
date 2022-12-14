@@ -12,5 +12,8 @@
 といっても、Webブラウザゲームの基礎を学びたいと思い、制作したのでクオリティはそこまで高くありません。
 
 
-参考記事 → https://hothukurou.com/blog/post-599  
-Ruby合宿で作ったもの → https://github.com/RubyCamp/rc2022su_team3
+参考記事(簡単にwebゲームが学べるのでおすすめ、マジ感謝です) → https://hothukurou.com/blog/post-599  
+参考にしたリポジトリ → https://github.com/hothukurou/enchant_js_game_templete  
+
+
+Ruby合宿で作ったもの → https://github.com/RubyCamp/rc2022su_team3  
