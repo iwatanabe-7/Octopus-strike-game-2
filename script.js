@@ -66,9 +66,13 @@ window.onload = function () {
 		const startbutton = new Sprite(120, 60);
 		startbutton.moveTo(80, 300);
 		startbutton.image = game.assets[retryImgUrl];
-		startScene.addChild(startbutton); 
-
-		
+		startScene.addChild(startbutton);
+		// const startbutton = new Surface(200,350);
+		// startbutton.context.moveTo(80, 300);
+        // startbutton.context.fillRect(80,300,200,350);
+		// startbutton.context.fillStyle = "black";
+        // startbutton.context.fill();
+		// startScene.addChild(startbutton);
 
 		startbutton.ontouchend = function () {
 			state = 0.1;
@@ -186,7 +190,7 @@ window.onload = function () {
 			if (takoyakiImg.y >= 500) {
 				game.replaceScene(endScene);
 				//ゲームオーバー後のテキスト表示
-				if(state >= 2){
+				if(state >= 5){
 					gameOverText.text = "Clear";
 					gameOverText.moveTo(150, 160);
 					gameOverText.color = 'green';
