@@ -4,8 +4,17 @@ window.onload = function () {
 	const game = new Game(400, 500);
 
 	//-------- 効果音  --------//
-	const clickSndUrl = "img/click.wav";
-	game.preload([clickSndUrl]);
+	const buttonclickSndUrl = "bgm/button.mp3";
+	game.preload([buttonclickSndUrl]);
+
+	const takoyakiclickSndUrl = "bgm/striking.mp3";
+	game.preload([takoyakiclickSndUrl]);
+
+	const battleSndUrl = "bgm/battle.mp3";
+	game.preload([battleSndUrl]);
+
+	const startSndUrl = "bgm/start.mp3";
+	game.preload([startSndUrl]);
 
 	//-------- 画像 --------//
 	const takoyakiImgUrl = "img/takoyaki.png";
@@ -32,6 +41,11 @@ window.onload = function () {
 		bg.image = game.assets[backgroundURL];
 		startScene.addChild(bg);
 
+		startScene.addEventListener(Event.ENTER_FRAME, function(){
+			// assets[startSndUrl].volume = 0.5;
+			game.assets[startSndUrl].play();
+		});
+
 		// // 円を表示するSpriteを作成する
 		// var square = new Sprite(50, 50);
 		// var surface = new Surface(50, 50);
@@ -54,8 +68,11 @@ window.onload = function () {
 		startbutton.image = game.assets[retryImgUrl];
 		startScene.addChild(startbutton); 
 
+		
+
 		startbutton.ontouchend = function () {
 			state = 0.1;
+			game.assets[buttonclickSndUrl].clone().play();
 			game.replaceScene(mainScene);
 		};
 
@@ -72,6 +89,10 @@ window.onload = function () {
 		var bg = new Sprite(400,500);
 		bg.image = game.assets[backgroundURL];
 		mainScene.addChild(bg);
+
+		mainScene.addEventListener(Event.ENTER_FRAME, function(){
+			game.assets[startSndUrl].pause();
+		});
 
 		//ポイント表示テキスト
 		const scoreText = new Label();
@@ -99,10 +120,10 @@ window.onload = function () {
 		//-------- タッチアクション  --------//
 		takoyakiImg.ontouchend = function () {
 			point++;
-			game.assets[clickSndUrl].clone().play();
+			game.assets[takoyakiclickSndUrl].clone().play();
 			this.y = -200;
 
-			if (point == 1) {
+			if (point < 1) {
 				state = 1;
 			} else if (point < 2) {
 				state = 2;
@@ -154,9 +175,8 @@ window.onload = function () {
 				state = 5.1
 			}
 			if (state == 5.1){
-				takoyakiImg.y += 15 + Math.random() * 30;
+				takoyakiImg.y += 10 + Math.random() * 30;
 			}
-			console.log(state);
 
 			//現在のテキスト表示
 			scoreText.text = "Point：" + point;
@@ -166,8 +186,17 @@ window.onload = function () {
 			if (takoyakiImg.y >= 500) {
 				game.replaceScene(endScene);
 				//ゲームオーバー後のテキスト表示
-				gameOverText.text = "GAMEOVER ";				//テキストに文字表示 
-				gameOverText2.text = "記録：" + point + "枚";
+				if(state >= 2){
+					gameOverText.text = "Clear";
+					gameOverText.moveTo(150, 160);
+					gameOverText.color = 'green';
+					
+				}else{
+					gameOverText.text = "GAMEOVER";
+					gameOverText.moveTo(100, 160);
+					gameOverText.color = 'red';
+				}
+				gameOverText2.text = "撃破：" + point + "個";
 			}
 
 		};
@@ -179,17 +208,18 @@ window.onload = function () {
 		//GAMEOVER
 		const gameOverText = new Label();
 		gameOverText.font = "50px fantasy";
-		gameOverText.color = 'red';
 		gameOverText.width = 400;
-		gameOverText.moveTo(100, 160);
 		endScene.addChild(gameOverText);
 	
 		const gameOverText2 = new Label();
 		gameOverText2.font = "37px fantasy";
-		gameOverText2.color = 'red';
 		gameOverText2.width = 400;
+		gameOverText2.color = 'white';
 		gameOverText2.moveTo(130, 220);
 		endScene.addChild(gameOverText2);
+
+
+
 
 
 		//リトライボタン
@@ -200,6 +230,7 @@ window.onload = function () {
 
 		retryBtn.ontouchend = function () {
 			state = 0.1;
+			game.assets[buttonclickSndUrl].clone().play();
 			game.replaceScene(mainScene);
 		};
 
@@ -211,6 +242,7 @@ window.onload = function () {
 
 		tweetBtn.ontouchend = function () {
 			state = 0;
+			game.assets[buttonclickSndUrl].clone().play();
 			game.popScene();
 			game.pushScene(startScene);
 			// game.replaceScene(startScene);

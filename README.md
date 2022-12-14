@@ -13,6 +13,10 @@
 
 
 参考記事(簡単にwebゲームが学べるのでおすすめ、マジ感謝です) → https://hothukurou.com/blog/post-599  
+
+音声提供  
+https://taira-komori.jpn.org/game01.html  
+  
 参考にしたリポジトリ → https://github.com/hothukurou/enchant_js_game_templete  
 
 
