@@ -32,23 +32,38 @@ window.onload = function () {
 		bg.image = game.assets[backgroundURL];
 		startScene.addChild(bg);
 
-		const startText = new Label("start");
-		startText.font = "20px Meiryo";
-		startText.color = 'rgba(255,255,255,1)';
+		// // 円を表示するSpriteを作成する
+		// var square = new Sprite(50, 50);
+		// var surface = new Surface(50, 50);
+		// surface.context.strokeStyle = "red";
+		// surface.context.strokeRect (0, 0, 100, 100);
+		// square.image = surface;
+		// startScene.addChild(square);
+
+		//-------- titleラベル  --------//
+		const startText = new Label("Octopus strike game 2");
+		startText.font = "37px fantasy";
+		startText.color = 'red';
 		startText.width = 400;
-		startText.moveTo(0, 30);
+		startText.moveTo(40, 180);
 		startScene.addChild(startText);
 
 		//startボタン
-		const startBtn = new Sprite(120, 60);
-		startBtn.moveTo(100, 300);
-		startBtn.image = game.assets[retryImgUrl];
-		startScene.addChild(startBtn); 
+		const startbutton = new Sprite(120, 60);
+		startbutton.moveTo(80, 300);
+		startbutton.image = game.assets[retryImgUrl];
+		startScene.addChild(startbutton); 
 
-		startBtn.ontouchend = function () {
+		startbutton.ontouchend = function () {
 			state = 0;
 			game.replaceScene(mainScene);
 		};
+
+		//shopボタン
+		const shopbutton = new Sprite(120, 60);
+		shopbutton.moveTo(220, 300);
+		shopbutton.image = game.assets[retryImgUrl];
+		startScene.addChild(shopbutton); 
 		
 		//Main画面の設定
 		const mainScene = new Scene();
@@ -59,7 +74,7 @@ window.onload = function () {
 		//ポイント表示テキスト
 		const scoreText = new Label();
 		scoreText.font = "20px Meiryo";
-		scoreText.color = 'rgba(255,255,255,1)';
+		scoreText.color = 'black';
 		scoreText.width = 400;
 		scoreText.moveTo(0, 30);
 		mainScene.addChild(scoreText);
@@ -100,6 +115,7 @@ window.onload = function () {
 			}
 			if (state == 1) {
 				takoyakiImg.y += 5;
+				takoyakiImg.y += 30;
 			}
 			if (state == 2) {
 				takoyakiImg.y += 15;
@@ -131,22 +147,30 @@ window.onload = function () {
 			if (takoyakiImg.y >= 500) {
 				game.replaceScene(endScene);
 				//ゲームオーバー後のテキスト表示
-				gameOverText.text = "GAMEOVER 記録：" + point + "枚";				//テキストに文字表示 
+				gameOverText.text = "GAMEOVER ";				//テキストに文字表示 
+				gameOverText2.text = "記録：" + point + "枚";
 			}
 
 		};
 
-		//結果画面
+		//-------- GAMEOVER画面  --------//
 		const endScene = new Scene();
 		endScene.backgroundColor = "black";
 
 		//GAMEOVER
 		const gameOverText = new Label();
-		gameOverText.font = "20px Meiryo";
-		gameOverText.color = 'rgba(255,255,255,1)';
+		gameOverText.font = "50px fantasy";
+		gameOverText.color = 'red';
 		gameOverText.width = 400;
-		gameOverText.moveTo(0, 30);
+		gameOverText.moveTo(100, 160);
 		endScene.addChild(gameOverText);
+	
+		const gameOverText2 = new Label();
+		gameOverText2.font = "37px fantasy";
+		gameOverText2.color = 'red';
+		gameOverText2.width = 400;
+		gameOverText2.moveTo(130, 220);
+		endScene.addChild(gameOverText2);
 
 
 
