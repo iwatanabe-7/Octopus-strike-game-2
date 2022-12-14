@@ -13,4 +13,4 @@
 
 
 参考記事 → https://hothukurou.com/blog/post-599
-Ruby合宿 → https://github.com/RubyCamp/rc2022su_team3
+Ruby合宿で作ったもの → https://github.com/RubyCamp/rc2022su_team3
