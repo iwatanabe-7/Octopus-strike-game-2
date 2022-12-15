@@ -1,12 +1,11 @@
-# Octopus-strike-game-2 
+# Octopus-strike-game-2 (製作途中)
 
 ## たこの逆襲2(地球防衛編)
 君は地球人だ。
 たこ焼きのおいしさを広めるためにやってきた「たこ星人」が、たこ焼きを発射して町に被害が出ている
 このままでは町の人々が危ない。侵略を止めるためにたこ焼きを回収しよう。
 
-<img src="https://user-images.githubusercontent.com/83575309/207869906-e7b2a7df-d927-46cb-a1c6-d87d613f5456.png" width=300>
-<img src="https://user-images.githubusercontent.com/83575309/207870173-a963332b-8a94-47fd-bb25-1e98d3965439.png" width=300>
+<img src="https://user-images.githubusercontent.com/83575309/207869906-e7b2a7df-d927-46cb-a1c6-d87d613f5456.png" width=300><img src="https://user-images.githubusercontent.com/83575309/207870173-a963332b-8a94-47fd-bb25-1e98d3965439.png" width=300>
 
 
 
