@@ -5,7 +5,8 @@
 たこ焼きのおいしさを広めるためにやってきた「たこ星人」が、たこ焼きを発射して町に被害が出ている
 このままでは町の人々が危ない。侵略を止めるためにたこ焼きを回収しよう。
 
-<img src="https://user-images.githubusercontent.com/83575309/207869906-e7b2a7df-d927-46cb-a1c6-d87d613f5456.png" width=300><img src="https://user-images.githubusercontent.com/83575309/207870173-a963332b-8a94-47fd-bb25-1e98d3965439.png" width=300>
+<img src="https://user-images.githubusercontent.com/83575309/207869906-e7b2a7df-d927-46cb-a1c6-d87d613f5456.png" width=300><img src="https://user-images.githubusercontent.com/83575309/207870173-a963332b-8a94-47fd-bb25-1e98d3965439.png" width=300><img src="https://user-images.githubusercontent.com/83575309/207871109-e6b50146-668f-4299-b5f0-64a7ce576fd5.png" width=300>
+
 
 
 
