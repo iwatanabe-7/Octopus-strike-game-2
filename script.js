@@ -3,31 +3,21 @@ enchant();
 window.onload = function () {
 	const game = new Game(400, 500);
 
-	//-------- 効果音  --------//
-	const buttonclickSndUrl = "bgm/button.mp3";
-	game.preload([buttonclickSndUrl]);
+	var ASSETS = {
+		//-------- 効果音  --------//
+		'button_bgm' : "bgm/button.mp3",
+		'takoyaki_click_bgm' : "bgm/striking.mp3",
+		'battle_bgm' : "bgm/battle.mp3",
+		'start_bgm' : "bgm/start.mp3",
 
-	const takoyakiclickSndUrl = "bgm/striking.mp3";
-	game.preload([takoyakiclickSndUrl]);
+	    //-------- 画像 --------//
+		'takoyaki_img' : "img/takoyaki.png",
+		'retry_img' : "img/retry.png",
+		'tweet_img' : "img/tweet.png",
+		'bg_outside_img' : "img/bg-outside.png",
+	}
 
-	const battleSndUrl = "bgm/battle.mp3";
-	game.preload([battleSndUrl]);
-
-	const startSndUrl = "bgm/start.mp3";
-	game.preload([startSndUrl]);
-
-	//-------- 画像 --------//
-	const takoyakiImgUrl = "img/takoyaki.png";
-	game.preload([takoyakiImgUrl]);
-
-	const retryImgUrl = "img/retry.png";
-	game.preload([retryImgUrl]);
-
-	const tweetImgUrl = "img/tweet.png";
-	game.preload([tweetImgUrl]);
-
-	const backgroundURL = "img/bg-outside.png";
-	game.preload([backgroundURL]);
+	game.preload(ASSETS);
 
 
 	game.onload = function () {
@@ -38,12 +28,12 @@ window.onload = function () {
 		const startScene = new Scene();
 		game.pushScene(startScene);
 		var bg = new Sprite(400,500);
-		bg.image = game.assets[backgroundURL];
+		bg.image = game.assets['bg_outside_img'];
 		startScene.addChild(bg);
 
 		startScene.addEventListener(Event.ENTER_FRAME, function(){
-			// assets[startSndUrl].volume = 0.5;
-			game.assets[startSndUrl].play();
+			// assets['start_bgm'].volume = 0.5;
+			game.assets['start_bgm'].play();
 		});
 
 		// // 円を表示するSpriteを作成する
@@ -65,21 +55,25 @@ window.onload = function () {
 		//startボタン
 		const startbutton = new Sprite(120, 60);
 		startbutton.moveTo(80, 300);
-		startbutton.image = game.assets[retryImgUrl];
-		startScene.addChild(startbutton); 
-
-		
+		startbutton.image = game.assets['retry_img'];
+		startScene.addChild(startbutton);
+		// const startbutton = new Surface(200,350);
+		// startbutton.context.moveTo(80, 300);
+        // startbutton.context.fillRect(80,300,200,350);
+		// startbutton.context.fillStyle = "black";
+        // startbutton.context.fill();
+		// startScene.addChild(startbutton);
 
 		startbutton.ontouchend = function () {
 			state = 0.1;
-			game.assets[buttonclickSndUrl].clone().play();
+			game.assets['button_bgm'].clone().play();
 			game.replaceScene(mainScene);
 		};
 
 		//shopボタン
 		const shopbutton = new Sprite(120, 60);
 		shopbutton.moveTo(220, 300);
-		shopbutton.image = game.assets[retryImgUrl];
+		shopbutton.image = game.assets['retry_img'];
 		startScene.addChild(shopbutton); 
 		
 
@@ -87,11 +81,11 @@ window.onload = function () {
 		//-------- Game画面 --------//
 		const mainScene = new Scene();
 		var bg = new Sprite(400,500);
-		bg.image = game.assets[backgroundURL];
+		bg.image = game.assets['bg_outside_img'];
 		mainScene.addChild(bg);
 
 		mainScene.addEventListener(Event.ENTER_FRAME, function(){
-			game.assets[startSndUrl].pause();
+			game.assets['start_bgm'].pause();
 		});
 
 		//ポイント表示テキスト
@@ -114,13 +108,13 @@ window.onload = function () {
 
 		const takoyakiImg = new Sprite(100, 100);
 		takoyakiImg.moveTo(118, 100);
-		takoyakiImg.image = game.assets[takoyakiImgUrl];
+		takoyakiImg.image = game.assets['takoyaki_img'];
 		mainScene.addChild(takoyakiImg);
 
 		//-------- タッチアクション  --------//
 		takoyakiImg.ontouchend = function () {
 			point++;
-			game.assets[takoyakiclickSndUrl].clone().play();
+			game.assets['takoyaki_click_bgm'].clone().play();
 			this.y = -200;
 
 			if (point < 1) {
@@ -186,7 +180,7 @@ window.onload = function () {
 			if (takoyakiImg.y >= 500) {
 				game.replaceScene(endScene);
 				//ゲームオーバー後のテキスト表示
-				if(state >= 2){
+				if(state >= 5){
 					gameOverText.text = "Clear";
 					gameOverText.moveTo(150, 160);
 					gameOverText.color = 'green';
@@ -225,24 +219,24 @@ window.onload = function () {
 		//リトライボタン
 		const retryBtn = new Sprite(120, 60);
 		retryBtn.moveTo(50, 300);
-		retryBtn.image = game.assets[retryImgUrl];
+		retryBtn.image = game.assets['retry_img'];
 		endScene.addChild(retryBtn); 
 
 		retryBtn.ontouchend = function () {
 			state = 0.1;
-			game.assets[buttonclickSndUrl].clone().play();
+			game.assets['button_bgm'].clone().play();
 			game.replaceScene(mainScene);
 		};
 
 		//ツイートボタン
 		const tweetBtn = new Sprite(120, 60);
 		tweetBtn.moveTo(230, 300);
-		tweetBtn.image = game.assets[tweetImgUrl];
+		tweetBtn.image = game.assets['tweet_img'];
 		endScene.addChild(tweetBtn);
 
 		tweetBtn.ontouchend = function () {
 			state = 0;
-			game.assets[buttonclickSndUrl].clone().play();
+			game.assets['button_bgm'].clone().play();
 			game.popScene();
 			game.pushScene(startScene);
 			// game.replaceScene(startScene);
