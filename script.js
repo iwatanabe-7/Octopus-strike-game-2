@@ -11,14 +11,18 @@ window.onload = function () {
 		'start_bgm' : "bgm/start.mp3",
 
 	    //-------- 画像 --------//
+		'start_img' : "img/start.png",
+		'shop_img'  : "img/shop.png",
 		'takoyaki_img' : "img/takoyaki.png",
+		'yes_img' : "img/yes.png",
+		'no_img' : "img/no.png",
+		'exit_img' : "img/exit.png",
 		'retry_img' : "img/retry.png",
 		'tweet_img' : "img/tweet.png",
 		'bg_outside_img' : "img/bg-outside.png",
 	}
 
 	game.preload(ASSETS);
-
 
 	game.onload = function () {
 		let point = 0;
@@ -32,7 +36,6 @@ window.onload = function () {
 		startScene.addChild(bg);
 
 		startScene.addEventListener(Event.ENTER_FRAME, function(){
-			// assets['start_bgm'].volume = 0.5;
 			game.assets['start_bgm'].play();
 		});
 
@@ -53,16 +56,10 @@ window.onload = function () {
 		startScene.addChild(startText);
 
 		//startボタン
-		const startbutton = new Sprite(120, 60);
-		startbutton.moveTo(80, 300);
-		startbutton.image = game.assets['retry_img'];
+		const startbutton = new Sprite(176, 60);
+		startbutton.moveTo(120, 280);
+		startbutton.image = game.assets['start_img'];
 		startScene.addChild(startbutton);
-		// const startbutton = new Surface(200,350);
-		// startbutton.context.moveTo(80, 300);
-        // startbutton.context.fillRect(80,300,200,350);
-		// startbutton.context.fillStyle = "black";
-        // startbutton.context.fill();
-		// startScene.addChild(startbutton);
 
 		startbutton.ontouchend = function () {
 			state = 0.1;
@@ -71,9 +68,9 @@ window.onload = function () {
 		};
 
 		//shopボタン
-		const shopbutton = new Sprite(120, 60);
-		shopbutton.moveTo(220, 300);
-		shopbutton.image = game.assets['retry_img'];
+		const shopbutton = new Sprite(176, 60);
+		shopbutton.moveTo(120, 360);
+		shopbutton.image = game.assets['shop_img'];
 		startScene.addChild(shopbutton); 
 		
 
@@ -123,7 +120,7 @@ window.onload = function () {
 				state = 2;
 			} else if (point < 3) {
 				state = 3;
-			} else if (point < 10) {
+			} else if (point < 4) {
 				state = 4;
 			} else {
 				state = 5;
@@ -184,11 +181,26 @@ window.onload = function () {
 					gameOverText.text = "Clear";
 					gameOverText.moveTo(150, 160);
 					gameOverText.color = 'green';
+					continueText.text = "";
+
+					retryBtn.remove();
+					tweetBtn.moveTo(120, 340);
+					tweetBtn.image = game.assets['exit_img'];
+					endScene.addChild(tweetBtn);
 					
 				}else{
 					gameOverText.text = "GAMEOVER";
 					gameOverText.moveTo(100, 160);
 					gameOverText.color = 'red';
+					continueText.text = "Continue?";
+
+					retryBtn.moveTo(30, 340);
+					retryBtn.image = game.assets['yes_img'];
+					endScene.addChild(retryBtn);
+					
+					tweetBtn.moveTo(210, 340);
+					tweetBtn.image = game.assets['no_img'];
+					endScene.addChild(tweetBtn);
 				}
 				gameOverText2.text = "撃破：" + point + "個";
 			}
@@ -212,15 +224,15 @@ window.onload = function () {
 		gameOverText2.moveTo(130, 220);
 		endScene.addChild(gameOverText2);
 
-
-
-
+		const continueText = new Label();
+		continueText.font = "37px fantasy";
+		continueText.width = 400;
+		continueText.color = 'Green';
+		continueText.moveTo(130, 280);
+		endScene.addChild(continueText);
 
 		//リトライボタン
-		const retryBtn = new Sprite(120, 60);
-		retryBtn.moveTo(50, 300);
-		retryBtn.image = game.assets['retry_img'];
-		endScene.addChild(retryBtn); 
+		const retryBtn = new Sprite(176, 60);
 
 		retryBtn.ontouchend = function () {
 			state = 0.1;
@@ -228,18 +240,12 @@ window.onload = function () {
 			game.replaceScene(mainScene);
 		};
 
-		//ツイートボタン
-		const tweetBtn = new Sprite(120, 60);
-		tweetBtn.moveTo(230, 300);
-		tweetBtn.image = game.assets['tweet_img'];
-		endScene.addChild(tweetBtn);
+		const tweetBtn = new Sprite(176, 60);
 
 		tweetBtn.ontouchend = function () {
 			state = 0;
 			game.assets['button_bgm'].clone().play();
-			game.popScene();
-			game.pushScene(startScene);
-			// game.replaceScene(startScene);
+			game.replaceScene(startScene);
 		};
 
 	};
