@@ -20,6 +20,10 @@
 
 参考記事(簡単にwebゲームが学べるのでおすすめ、マジ感謝です) → https://hothukurou.com/blog/post-599  
 
+画像提供
+サイト｜空想曲線  
+ＵＲＬ｜https://kopacurve.blog.fc2.com/  
+
 音声提供  
 https://taira-komori.jpn.org/game01.html  
   
