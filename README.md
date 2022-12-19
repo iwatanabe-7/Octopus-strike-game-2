@@ -7,7 +7,8 @@
 
 ## 遊び方  
 たこ焼きが上から落ちてくるのでクリックして回収しよう。回収していくとどんどん難易度が上がっていきます。レベル5まで行けたらClearです。    
-<img src="https://user-images.githubusercontent.com/83575309/208451307-bab4c6d9-b856-4473-a273-b903f2e8e356.png" width=300><img src="https://user-images.githubusercontent.com/83575309/207871109-e6b50146-668f-4299-b5f0-64a7ce576fd5.png" width=300><img src="https://user-images.githubusercontent.com/83575309/207870173-a963332b-8a94-47fd-bb25-1e98d3965439.png" width=300>
+<img src="https://user-images.githubusercontent.com/83575309/208451307-bab4c6d9-b856-4473-a273-b903f2e8e356.png" width=300><img src="https://user-images.githubusercontent.com/83575309/208451842-9a64cce3-7a77-4a63-8448-c632ced0165d.png" width=300><img src="https://user-images.githubusercontent.com/83575309/208452030-af752baf-a0bc-4f90-a23a-5444dc52999e.png" width=300>
+<img src="https://user-images.githubusercontent.com/83575309/208451563-d3f408da-6195-4e58-af75-359bd0fe6131.png" width=300>
 
 
 
